@@ -1,0 +1,136 @@
+.admin__sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow: auto;
+    width: 300px;
+    min-width: 300px;
+    border-right: 1px solid $borderColor;
+    background-color: $bg3;
+    z-index: 101;
+    transition: $transition;
+}
+
+.sidebaroverlay{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: rgba($color: $bg, $alpha: 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: $transition;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar-nav{
+    margin-top: 30px;
+    list-style: none;
+    padding: 0;
+}
+
+.admin_logo{
+    padding: 25px 20px;
+    border-bottom: 1px solid $borderColor;
+    height: 81px;
+    img{
+        height: 40px;
+        width: 40px;
+        object-fit: contain;
+        margin-right: 15px;
+        border-radius: 10px;
+    }
+}
+
+.sidebar-nav > li > a{
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;
+    font-size: 15px;
+    text-decoration: none !important;
+    color: #ffffff;
+    position: relative;
+    margin-top: 10px;
+    transition: $transition;
+    span{
+        margin-left: 10px;
+    }
+    
+    .icon{
+        font-size: 20px;
+    }
+    
+    &:after{
+        position: absolute;
+        height: 100%;
+        width: 3px;
+        left: -3px;
+        top: 0;
+        background: $color;
+        content: "";
+        border-radius: 0 50% 50% 0;
+        transition: $transition;
+    }
+    
+    &.active:after{
+        left: 0;
+    }
+
+    &.active{
+        background-color: rgba($color: $color, $alpha: 0.1);
+    }
+}
+
+.sidebar-sub-nav{
+    list-style: none;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+    & li{
+        position: relative;
+    }
+    
+    & li a:after{
+        content: "";
+        position: absolute;
+        height: 5px;
+        width: 5px;
+        background: #ffffff;
+        border-radius: 50px;
+        left: 38px;
+        top: 15px;
+        transition: $transition;
+    }
+    & > li > a{
+        color: #fff;
+        text-decoration: none !important;
+        font-weight: 300;
+        padding: 5px 25px 5px 55px;
+        display: block
+    }
+
+    & > li a.active:after{
+        background: $color;
+        transform: scale(1.5);
+    }
+}
+
+@media(max-width: 1024px){
+    .admin__sidebar{
+        transform: translateX(-320px);
+        min-width: auto;
+        max-width: 85vw;
+    }
+
+    .admin__sidebar.showOnMobile{
+        transform: translateX(0);
+    }
+
+    .sidebaroverlay.showOnMobile{
+        opacity: 1;
+        visibility: visible;
+    }
+}

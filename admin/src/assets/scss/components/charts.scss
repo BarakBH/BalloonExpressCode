@@ -1,0 +1,43 @@
+.charts-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.chart-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg3;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid $borderColor;
+  & > div{
+    width: 100%;
+  }
+}
+
+.apexcharts-menu {
+  background-color: $bg3 !important;
+}
+
+.apexcharts-menu-item:hover{
+  background-color: rgba($color: $color2, $alpha: .3) !important;
+}
+
+.apexcharts-text tspan,
+.apexcharts-legend-text{
+  fill: #ffffffb0 !important;
+  color: #ffffffb0 !important;
+}
+
+svg{
+  max-width: 100%;
+  height: auto;
+}
+
+.apexcharts-canvas{
+  max-width: 100%;
+}

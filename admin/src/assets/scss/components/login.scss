@@ -1,0 +1,30 @@
+.login{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: $bg3, $alpha: 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.login-form{
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  border: 1px solid $borderColor;
+  border-radius: 10px;
+  background-color: $bg3;
+  button{
+    width: 100%;
+    margin-top: 30px;
+    max-width: 100%;
+    padding: 10px 20px;
+    font-size: 20px;
+  }
+}

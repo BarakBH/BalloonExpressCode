@@ -1,0 +1,212 @@
+.categories__table{
+    margin-top: 20px;
+}
+
+.categories__table .rt-td{
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.add-category-btn{
+    display: flex;
+    align-items: center;
+    .icon{
+        margin-right: 10px;
+        font-size: 20px;
+    }
+}
+
+.data-table{
+    overflow: hidden;
+}
+
+.action-options{
+    background-color: rgba($color: $color, $alpha: .2);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 150px;
+    max-width: 300px;
+    list-style: none;
+    li{
+        padding: 5px 10px;
+        text-transform: capitalize;
+        font-weight: 300;
+        cursor: pointer;
+        transition: $transition;
+        border-radius: 5px;
+        &:not(:last-child){
+            border-bottom: 1px solid $borderColor;
+        }
+        &:hover{
+            background-color: rgba($color: $color, $alpha: .4);
+        }
+    }
+}
+
+.category-thumbnail{
+    height: 60px;
+    width: 60px;
+    min-width: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.categories__table .ReactTable .rt-tbody .rt-td:last-child,
+.categories__table .ReactTable .rt-thead .rt-th:last-child div{
+    justify-content: flex-end;
+    display: flex;
+}
+
+.categories__table .ReactTable .rt-tbody .rt-td:last-child{
+    padding-right: 30px;
+}
+
+.data-table .ReactTable{
+    background-color: $bg3;
+    border-radius: 10px;
+    min-height: 200px;
+    .rt-noData{
+        background-color: transparent;
+        color: #ffffff;
+    }
+    .rt-td{
+        padding: 10px 15px;
+        text-transform: capitalize;
+        white-space: normal;
+        display: flex;
+        align-items: center;
+        word-break: break-all;
+    }
+    .rt-th{
+        padding: 20px 15px !important;
+        text-align: start;
+        text-transform: capitalize;
+        white-space: normal;
+    }
+
+    .-loading{
+        background-color: rgba($color: $bg, $alpha: 0.5);
+        & > div{
+            color: #ffffff;
+        }
+    }
+    .rt-tr-group{
+        border-top: 1px solid rgba(255, 255, 255, 0.048) !important;
+        transition: $transition;
+        &:hover{
+            background-color: $bg3;
+        }
+    }
+    .-pagination{
+        border-top: 1px solid rgba(255, 255, 255, 0.048) !important;
+        align-items: center;
+    }
+
+    .-pagination .-center{
+        order: -1;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        input{
+            background-color: $bg3;
+            height: 30px;
+            margin: 0 10px;
+            text-align: center;
+            border-radius: 5px;
+            max-width: 60px;
+            padding: 0;
+        }
+        .-pageInfo{
+            padding: 5px 20px;
+            border-radius: 50px;
+        }
+        select{
+            background-color: $bg3;
+            color: #ffffff;
+            border-radius: 50px;
+            padding: 7px 25px 7px 15px;
+            border-color: $borderColor;
+        }
+    }
+
+    .-pagination .-next,
+    .-pagination .-previous{
+        max-width: max-content;
+    }
+    
+    .-pagination .-next .-btn,
+    .-pagination .-previous .-btn{
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'%0Awidth='30' height='30'%0AviewBox='0 0 172 172'%0Astyle=' fill:%23000000;'%3E%3Cg fill='none' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cpath d='M0,172v-172h172v172z' fill='none'%3E%3C/path%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M114.55469,22.87734c-1.48951,0.04438 -2.90324,0.6669 -3.94167,1.73568l-57.33333,57.33333c-2.23811,2.23904 -2.23811,5.86825 0,8.10729l57.33333,57.33333c1.43802,1.49778 3.5734,2.10113 5.5826,1.57735c2.0092,-0.52378 3.57826,-2.09284 4.10204,-4.10204c0.52378,-2.0092 -0.07957,-4.14458 -1.57735,-5.5826l-53.27969,-53.27969l53.27969,-53.27969c1.69569,-1.64828 2.20555,-4.16851 1.28389,-6.3463c-0.92166,-2.17779 -3.08576,-3.56638 -5.44951,-3.49667z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center no-repeat;
+        height: 30px;
+        width: 30px;
+        min-width: 30px;
+        background-size: 20px;
+        background-color: $bg3;
+        border-radius: 50px;
+        margin: 7px;
+        &:hover{
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'%0Awidth='30' height='30'%0AviewBox='0 0 172 172'%0Astyle=' fill:%23000000;'%3E%3Cg fill='none' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cpath d='M0,172v-172h172v172z' fill='none'%3E%3C/path%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M114.55469,22.87734c-1.48951,0.04438 -2.90324,0.6669 -3.94167,1.73568l-57.33333,57.33333c-2.23811,2.23904 -2.23811,5.86825 0,8.10729l57.33333,57.33333c1.43802,1.49778 3.5734,2.10113 5.5826,1.57735c2.0092,-0.52378 3.57826,-2.09284 4.10204,-4.10204c0.52378,-2.0092 -0.07957,-4.14458 -1.57735,-5.5826l-53.27969,-53.27969l53.27969,-53.27969c1.69569,-1.64828 2.20555,-4.16851 1.28389,-6.3463c-0.92166,-2.17779 -3.08576,-3.56638 -5.44951,-3.49667z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center no-repeat;
+            background-size: 20px !important;
+        }
+    }
+
+    .-pagination .-next .-btn{
+        transform: rotate(180deg);
+    }
+}
+
+.add-categories h3{
+    text-transform: capitalize;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.add-categories input{
+    margin-bottom: 20px;
+}
+
+.add-categories input[type="file"]{
+    display: none;
+}
+
+.add-categories .image-input{
+    border: 1px solid $borderColor;
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    opacity: 0.7;
+    cursor: pointer;
+    background-color: rgba($color: $bg, $alpha: 0.3);
+    .icon{
+        margin-right: 10px;
+    }
+}
+
+.add-categories button{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 5px;
+    max-width: 100%;
+}
+
+.thumbnail-preview-category{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    margin-top: 15px;
+    object-fit: cover;
+}
+
+@media(max-width:767px){
+    .data-table .ReactTable .-pagination .-center{
+        width: 100%;
+        min-width: 100%;
+        margin-top: 10px;
+        justify-content: center;
+    }
+}

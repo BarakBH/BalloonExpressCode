@@ -1,0 +1,210 @@
+.products__table{
+  margin-top: 20px;
+}
+
+.products__table .product-thumbnail{
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.products__table .rt-td{
+  display: flex;
+  align-items: center;
+  white-space: normal;
+}
+
+.products__table .ReactTable .rt-tbody .rt-td:last-child,
+.products__table .ReactTable .rt-thead .rt-th:last-child div{
+    justify-content: flex-end;
+    display: flex;
+}
+
+.products__table .ReactTable .rt-tbody .rt-td:last-child{
+    padding-right: 30px;
+}
+
+.order-status{
+  padding: 5px 10px;
+  background-color: rgba($color: $color, $alpha: .2);
+  border-radius: 5px;
+}
+
+.order-status.shipped{
+  background-color: rgba($color: rgb(8, 189, 104), $alpha: 0.2);
+  color: rgba($color: rgb(8, 189, 104), $alpha: 1);;
+}
+
+.order-status.pending{
+  background-color: rgba($color: rgb(245, 208, 89), $alpha: 0.2);
+  color: rgba($color: rgb(245, 208, 89), $alpha: 1);;
+}
+
+.customers__table{
+  margin-top: 20px;
+}
+
+.add-product-btn{
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none !important;
+  .icon{
+    font-size: 20px;
+    margin-right: 10px;
+  }
+}
+
+.add-produc-form{
+  display: flex;
+  margin-top: 20px;
+  .col1{
+    width: calc(100% - 330px);
+    margin-right: 30px;
+  }
+  .col2{
+    width: 300px;
+  }
+  .detail-box{
+    background: $bg3;
+    border: 1px solid $borderColor;
+    border-radius: 10px;
+    padding: 20px;
+    &:not(:first-child){
+      margin-top: 30px;
+    }
+    & > h6{
+      text-transform: uppercase;
+      font-weight: 400;
+      position: relative;
+      max-width: max-content;
+      padding-bottom: 2px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      &:after{
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        bottom: 0;
+        background-color: #ffffff41;
+        left: 0;
+      }
+    }
+  }
+
+  .btns-wrapper{
+    width: calc(100% + 10px);
+    margin: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    button{
+      width: 100%;
+      padding: 15px;
+      margin: 5px;
+      max-width: 100%;
+    }
+  }
+}
+
+.form-group{
+  label{
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-weight: 300;
+    font-size: 13px;
+    span{
+      color: rgba(255, 255, 255, 0.452);
+      font-size: 10px;
+    }
+  }
+}
+
+.form-row{
+  display: flex;
+  width: calc(100% + 20px);
+  margin: 10px -10px -10px -10px;
+  flex-wrap: wrap;
+  .form-group{
+    margin-top: 0;
+    width: calc(50% - 20px);
+    margin: 10px;
+  }
+}
+
+.thumbnail-picker{
+  border: 1px dashed $borderColor;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  & > input{
+    position: absolute;
+    height: 100% !important;
+    width: 100% !important;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    cursor: pointer;
+  }
+
+  & > img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  & > label{
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    font-size: 13px;
+    .icon{
+      margin-right: 10px;
+      position: relative;
+      top: -1px;
+    }
+  }
+}
+
+.product-gallery{
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% + 10px);
+  margin: 20px -5px 10px -5px;
+  img{
+    width: calc(50% - 10px);
+    margin: 5px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+}
+
+@media(max-width:767px){
+  .add-produc-form{
+    flex-direction: column;
+  }
+  
+  .add-produc-form .col1{
+    width: 100%;
+    margin: 0;
+  }
+
+  .add-produc-form .col2{
+    width: 100%;
+    margin: 0;
+    margin-top: 30px;
+  }
+}

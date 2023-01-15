@@ -1,0 +1,92 @@
+.admin__header{
+    height: 81px;
+    width: calc(100vw - 300px);
+    border-bottom: 1px solid $borderColor;
+    background-color: $bg3;
+    position: fixed;
+    top: 0;
+    left: 300px;
+    padding: 10px 30px ;
+    display: flex;
+    align-items: center;
+    height: 81px;
+    z-index: 100;
+    justify-content: space-between;
+    transition: $transition;
+
+    .header-right{
+        display: flex;
+        align-items: center;
+    }
+}
+
+.sidebar-toggle{
+    display: none;
+    .icon{
+        font-size: 20px;
+    }
+}
+
+.admin__header .user-dropdown{
+    position: relative;
+    .icon{
+        height: 40px;
+        width: 40px;
+        margin-left: 20px;
+        opacity: 0.8;
+        transition: $transition;
+        &:hover{
+            opacity: 1;
+        }
+    }
+    &:hover > .menu{
+        opacity: 1;
+        visibility: visible;
+    }
+    .menu{
+        position: absolute;
+        background-color: $bg3;
+        border-radius: 10px;
+        padding: 10px;
+        right: 0;
+        top: 103%;
+        list-style: none;
+        width: 150px;
+        border: 1px solid $borderColor;
+        transition: $transition;
+        opacity: 0;
+        visibility: hidden;
+        a{
+            display: block;
+            color: #ffffff;
+            text-transform: capitalize;
+            padding: 10px;
+            text-align: left;
+            text-decoration: none !important;
+            border-radius: 5px;
+            transition: $transition;
+            &:hover{
+                background-color: $bg;
+            }
+        }
+    }
+}
+
+.admin__header .notifications-button .icon{
+    font-size: 30px;
+    transition: 0.3s all;
+}
+
+
+@media(max-width: 1024px){
+    .admin__header{
+        width: 100%;
+        left: 0;
+    }
+
+    .sidebar-toggle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,114 @@
+.auth{
+    padding: 40px 15px;
+    .container{
+        max-width: 450px;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 1px solid $borderColor;
+        border-radius: 10px;
+        background-color: $bg;
+        .heading{
+            font-weight: 300;
+            text-transform: capitalize;
+            text-align: center;
+            font-size: 30px;
+        }
+        form{
+            width: 100%;
+            margin-top: 30px;
+            .form-group:not(.form-checkbox){
+                margin-bottom: 20px;
+                position: relative;
+                text-align: left;
+                label{
+                    text-transform: capitalize;
+                    color: rgb(138, 138, 138);
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 15px;
+                    background-color: $bg;
+                    padding: 0 5px;
+                    transition: $transition;
+                    font-size: 13px;
+                }
+                input{
+                    position: relative;
+                    z-index: 1;
+                    background-color: transparent;
+                    font-size: 13px;
+                }
+            
+                input:focus + label,
+                input:valid + label,
+                input.active + label{
+                    top: 0;
+                    z-index: 2;
+                    color: #ffffff;
+                }
+            }
+            .form-checkbox{
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                input{
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 5px;
+                    background-color: transparent;
+                    appearance: none;
+                    padding: 0;
+                    background-image: none;
+                    transition: $transition;
+                    background-repeat: no-repeat;
+                    background-size: 80%;
+                    background-position: top 2px left 2px
+                }
+
+                input:focus{
+                    border-color: $borderColor;
+                }
+
+                input:checked{
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'%0Awidth='32' height='32'%0AviewBox='0 0 172 172'%0Astyle=' fill:%23000000;'%3E%3Cg fill='none' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cpath d='M0,172v-172h172v172z' fill='none'%3E%3C/path%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M145.07483,27.4555c-2.64829,-2.94007 -7.17823,-3.17748 -10.11933,-0.53033l-66.61417,59.94917l-31.0245,-31.0245c-1.79937,-1.86302 -4.46396,-2.61019 -6.96964,-1.95433c-2.50568,0.65586 -4.4625,2.61268 -5.11836,5.11836c-0.65586,2.50568 0.09131,5.17027 1.95433,6.96964l35.83333,35.83333c2.69555,2.69454 7.02857,2.8079 9.86133,0.258l71.66667,-64.5c2.94007,-2.64829 3.17748,-7.17823 0.53033,-10.11933z'%3E%3C/path%3E%3Cpath d='M134.9555,69.92517l-66.61417,59.94917l-31.0245,-31.0245c-2.81205,-2.71597 -7.28194,-2.67713 -10.04637,0.0873c-2.76443,2.76443 -2.80327,7.23432 -0.0873,10.04637l35.83333,35.83333c2.69555,2.69454 7.02857,2.8079 9.86133,0.258l71.66667,-64.5c2.84827,-2.6683 3.03773,-7.12516 0.42619,-10.02557c-2.61153,-2.9004 -7.06378,-3.17785 -10.01519,-0.6241z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                    border-color: #ffffff;
+                }
+
+                label{
+                    margin-left: 10px;
+                    text-transform: capitalize;
+                    color: rgb(196, 196, 196);
+                }
+            }
+            button[type="submit"]{
+                width: 100%;
+                max-width: 100%;
+                padding: 12px;
+            }
+        }
+    }
+}
+
+.social-login-btns{
+    display: flex;
+    margin: 10px -5px -5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    button{
+        padding: 8px 12px;
+        border-radius: 50px;
+        border: 1px solid $borderColor;
+        display: flex;
+        align-items: center;
+        transition: $transition;
+        margin: 5px;
+        background-color: $bg;
+        .icon{
+            margin-right: 10px;
+            font-size: 20px;
+        }
+    }
+}

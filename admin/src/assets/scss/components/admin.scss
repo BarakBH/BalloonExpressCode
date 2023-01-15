@@ -1,0 +1,51 @@
+@import './adminHeader.scss';
+@import './adminSidebar.scss';
+@import './categories.scss';
+
+.admin{
+    min-height: 100vh;
+}
+
+.admin__content{
+    padding-top: 111px;
+    padding-left: 320px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    min-height: 100vh;
+    transition: $transition;
+    .container{
+        padding: 0;
+    }
+}
+
+.page-title{
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.page-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin_logo{
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 20px;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    .icon{
+        margin-right: 15px;
+        font-size: 30px;
+        position: relative;
+        top: -3px;
+    }
+}
+
+@media(max-width: 1024px){
+    .admin__content{
+        padding-left: 20px;
+    }
+}
