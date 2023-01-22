@@ -8,7 +8,7 @@ module.exports.authorize = async (req, res, next) => {
 
         //check token
         if(!authorization){
-            return res.status(401).json({message: "Unauthorized!"})
+            return res.status(401).json({message: "!לא מאושר"})
         }
 
         const token = authorization.split(" ")[1];
@@ -16,18 +16,18 @@ module.exports.authorize = async (req, res, next) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         if(!decoded){
-            return res.status(401).json({message: "Unauthorized!"})
+            return res.status(401).json({message: "!לא מאושר"})
         }
 
         // verify token
         const checkToken = await Users.findOne({tokens: token});
         if(!checkToken){
-            return res.status(401).json({message: "Unauthorized!"});
+            return res.status(401).json({message: "!לא מאושר"});
         }
 
         // check code expiry date
         if (new Date() >= decoded.exp * 1000) {
-            return res.status(400).json({ message: "Unauthorized!" });
+            return res.status(400).json({ message: "!לא מאושר" });
         }
 
         req.user = checkToken;
@@ -35,7 +35,7 @@ module.exports.authorize = async (req, res, next) => {
         next();
     } catch (error) {
 
-        res.status(500).json({message: "Something wrong",error});
+        res.status(500).json({message: "משהו השתבש",error});
     }
 }
 
@@ -46,7 +46,7 @@ module.exports.authorizeAdmin = async (req, res, next) => {
 
         //check token
         if(!authorization){
-            return res.status(401).json({message: "Token not found!"})
+            return res.status(401).json({message: "TOKEN שגיאה במציאת"})
         }
 
         const token = authorization.split(" ")[1];
@@ -54,13 +54,13 @@ module.exports.authorizeAdmin = async (req, res, next) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         if(!decoded){
-            return res.status(401).json({message: "Token invalid!"})
+            return res.status(401).json({message: "Token לא ולידי"})
         }
 
         // verify token
         const checkToken = await Users.findOne({tokens: token});
         if(!checkToken){
-            return res.status(401).json({message: "Invalid token!"});
+            return res.status(401).json({message: "Token לא ולידי"});
         }
 
         // check code expiry date
@@ -69,12 +69,12 @@ module.exports.authorizeAdmin = async (req, res, next) => {
         }
 
         if(checkToken.role !== "admin"){
-            return res.status(401).json({message: "You are not admin!"});
+            return res.status(401).json({message: "אתה לא אדמין!"});
         }
         
         next();
     } catch (error) {
 
-        res.status(500).json({message: "Something wrong",error});
+        res.status(500).json({message: "משהו השתבש",error});
     }
 }

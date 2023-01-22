@@ -1,7 +1,7 @@
 import { MdDashboard, MdOutlineShoppingBag } from "react-icons/md";
-import { BsCart2, BsLink45Deg } from "react-icons/bs";
-import { FaUsers } from "react-icons/fa";
-import { BiCategory } from "react-icons/bi";
+import { BsCart2 } from "react-icons/bs";
+import { FaShopify, FaUsers } from "react-icons/fa";
+import { BiCategory, BiLock } from "react-icons/bi";
 
 
 const data = [
@@ -11,9 +11,9 @@ const data = [
         path: "/dashboard",
     },
     {
-        title: "הזמנות",
-        icon: <MdOutlineShoppingBag className="icon" />,
-        path: "/orders",
+        title: 'קטגוריות',
+        icon: <BiCategory className="icon" />,
+        path: '/categories'
     },
     {
         title: "מוצרים",
@@ -21,9 +21,9 @@ const data = [
         path: "/products",
     },
     {
-        title: 'קטגוריות',
-        icon: <BiCategory className="icon" />,
-        path: '/categories'
+        title: "הזמנות",
+        icon: <MdOutlineShoppingBag className="icon" />,
+        path: "/orders",
     },
     {
         title: "לקוחות",
@@ -31,8 +31,13 @@ const data = [
         path: "/customers",
     },
     {
+        title: "הוספת משתמש אדמין",
+        icon: <BiLock className="icon" />,
+        path: "/addAdmin",
+    },
+    {
         title: "החנות שלי",
-        icon: <BsLink45Deg className="icon" />,
+        icon: <FaShopify className="icon" />,
         path: "/",
     },
 ];

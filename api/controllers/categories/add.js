@@ -9,7 +9,7 @@ const addCategories = async (req, res) => {
     //validate user data
     if (!name || !slug || !thumbnail) {
       return res.status(400).json({
-        message: 'Please fill all fields',
+        message: 'נא מלאו את כל השדות',
       });
     }
 
@@ -17,7 +17,7 @@ const addCategories = async (req, res) => {
     const checkCategory = await Categories.findOne({ slug });
     if (checkCategory) {
       return res.status(400).json({
-        message: 'Category already exist',
+        message: 'קטגוריה כבר קיימת',
       });
     }
 
@@ -34,12 +34,12 @@ const addCategories = async (req, res) => {
 
     // send response
     res.status(200).json({
-      message: 'Category added',
+      message: 'קטגוריה נוספה בהצלחה',
       category: saveCategory,
     });
 
   } catch (error) {
-    res.status(500).json({message: "Something wrong",error});
+    res.status(500).json({message: "משהו השתבש",error});
   }
 
 }

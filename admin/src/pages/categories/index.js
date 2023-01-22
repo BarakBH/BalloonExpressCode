@@ -62,10 +62,10 @@ const Categories = () => {
       Header: "שם",
       accessor: "name",
     },
-    {
-      Header: "כמות",
-      accessor: "products",
-    },
+    // {
+    //   Header: "כמות",
+    //   accessor: "products",
+    // },
     {
       Header: "אפשרויות",
       accessor: "_id",
