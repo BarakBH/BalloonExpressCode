@@ -1,0 +1,10 @@
+export const SET_USER = "SET_USER";
+export const LOGOUT = "LOGOUT";
+export const AUTH_LOADING_ON = "AUTH_LOADING_ON";
+export const AUTH_LOADING_OFF = "AUTH_LOADING_OFF";
+export const TOGGLE_CART = "TOGGLE_CART";
+export const SET_PRODUCTS = "SET_PRODUCTS";
+export const SET_CATEGORIES = "SET_CATEGORIES";
+export const LOADING = "LOADING";
+export const SET_CART = "SET_CART";
+export const SET_ORDERS = "SET_ORDERS";
