@@ -1,0 +1,79 @@
+.checkout{
+  padding: 40px 0;
+  .shipping-address-form{
+    display: flex;
+    gap: 40px;
+    .left-side{
+      width: calc(50% - 20px);
+      border-radius: 10px;
+      border: 1px solid $borderColor;
+      background-color: rgba($color: $bg, $alpha: 0.5);
+      padding: 20px;
+    }
+    .right-side{
+      width: calc(50% - 20px);
+      border-radius: 10px;
+      border: 1px solid $borderColor;
+      background-color: rgba($color: $bg, $alpha: 0.5);
+      padding: 20px;
+    }
+  }
+
+  .products-table{
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+    td,th{
+      border: 1px solid $borderColor;
+      padding: 20px;
+      text-align: left;
+    }
+  }
+
+  .payment-methods{
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 1px solid $borderColor;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $borderColor;
+    .form-radio{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    p{
+      margin-top: 15px;
+    }
+  }
+
+  .order-place-btn{
+    margin-top: 30px;
+    padding: 15px 30px;
+  }
+}
+
+.form-row{
+  gap: 30px;
+  display: flex;
+  &:not(:first-child){
+    margin-top: 20px;
+  }
+  .form-group{
+    width: calc(50% - 15px);
+    margin-top: 0;
+  }
+}
+
+@media(max-width:950px){
+  .checkout .shipping-address-form{
+    flex-direction: column;
+  }
+
+  .checkout .shipping-address-form .left-side{
+    width: 100%;
+  }
+
+  .checkout .shipping-address-form .right-side{
+    width: 100%;
+  }
+}

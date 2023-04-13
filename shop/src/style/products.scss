@@ -13,7 +13,10 @@
 
   .product-box{
     border: 1px solid $borderColor;
+    border-radius: 10px;
     .thumbnail{
+      position: relative;
+      border-radius: 10px 10px 0 0;
       overflow: hidden;
       padding-bottom: 80%;
       display: block;
@@ -43,6 +46,7 @@
         display: flex;
         margin-top: 20px;
         align-items: center;
+        justify-content: space-between;
         .btn{
           min-width: auto;
         }
@@ -51,5 +55,17 @@
         }
       }
     }
+  }
+}
+
+@media(max-width:1024px){
+  .products-grid .products-wrapper{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:767px){
+  .products-grid .products-wrapper{
+    grid-template-columns: repeat(1, 1fr);
   }
 }
