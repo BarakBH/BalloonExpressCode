@@ -23,9 +23,9 @@ module.exports.logout = async (req, res) => {
         const removeToken = await Users.findOneAndUpdate({ email:decode.user.email }, { $pull: { tokens: token } });
 
         //send success response
-        res.status(200).json({message: "Logout success"});
+        res.status(200).json({message: "התנתקות בוצעה בהצלחה"});
     } catch (error) {
 
-        res.status(500).json({message: "Something wrong",error});
+        res.status(500).json({message: "משהו השתבש",error});
     }
 }

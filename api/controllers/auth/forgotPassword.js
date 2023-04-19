@@ -8,26 +8,26 @@ module.exports.resetPassword = async (req, res) => {
         const { code, password, email } = req.body;
 
         if(!code && !email) {
-            return res.status(400).json({message: "Verification code or email required!"});
+            return res.status(400).json({message: "אימייל או קוד שחזור חסרים"});
         }
 
         if(code){
             //verify Code
             const checkCode = await Tokens.findOne({ where: { token: code } });
             if (!checkCode) {
-                return res.status(400).json({ message: "Verification code invalid or expired" });
+                return res.status(400).json({ message: "שחזור הקוד לא תקין או שזמנו עבר" });
             }
 
             //check if code type not same type 3 => password reset
             if (checkCode?.type !== 3) {
-                return res.status(400).json({ message: "Verification code invalid" });
+                return res.status(400).json({ message: "שחזור קוד לא תקין" });
             }
 
             // check code expiry date
             const date = await new Date();
             const expiryDate = await new Date(checkCode.expiry);
             if (expiryDate < date) {
-                return res.status(400).json({ message: "Code expired!" });
+                return res.status(400).json({ message: "הקוד פג תוקף" });
             }
 
             //delete code
@@ -36,12 +36,12 @@ module.exports.resetPassword = async (req, res) => {
             });
 
             //send success response
-            res.status(200).json({ message: "Password reset successfully!" });
+            res.status(200).json({ message: "סיסמא שוחזרה בהצלחה" });
         }
 
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: "Something wrong", error });
+        res.status(500).json({ message: "משהו השתבש", error });
     }
 };

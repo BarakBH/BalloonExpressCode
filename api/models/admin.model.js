@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "אנא הכנס שם"],
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
-    default: "customer",
+    default: "admin",
   },
   tokens: {
     type: Array,
@@ -27,4 +27,4 @@ const userSchema = new mongoose.Schema({
   },
 }, {timestamps: true});
 
-module.exports = mongoose.models.users || mongoose.model("users", userSchema);
+module.exports = mongoose.models.admins || mongoose.model("admins", adminSchema);

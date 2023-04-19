@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const productsSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Name required"],
+    required: [true, "שם שדה חובה"],
     maxLength: [150],
   },
   slug: {
@@ -19,7 +19,7 @@ const productsSchema = new mongoose.Schema({
   },
   orders: {
     type: Number,
-    required: [true, "Orders required"],
+    required: [true, "הזמנה שדה חובה"],
     default: 0,
   },
   thumbnail: {
@@ -33,7 +33,7 @@ const productsSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: [true, "Price required"],
+    required: [true, "סיסמא שדה חובה"],
     default: 0,
   },
   isSale: {
