@@ -13,7 +13,7 @@ import Login from "./pages/login";
 import Authorize from './utils/authorize';
 import { ToastContainer } from 'react-toastify';
 import EditProduct from './pages/products/editProduct';
-// import addAdmin from './pages/addAdmin';
+import AddAdmin from './pages/addAdmin';
 
 function App() {
   const [showSidebar, setshowSidebar] = useState(false);
@@ -32,7 +32,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path='/edit-product/:id' element={<EditProduct />} />
-          <Route path="/addAdmin" element={<addAdmin />} />
+          <Route path="/addAdmin" element={<AddAdmin />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>

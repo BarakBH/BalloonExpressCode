@@ -1,4 +1,5 @@
 const Users = require('../../models/user.model');
+const Admins = require('../../models/admin.model');
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
@@ -35,6 +36,38 @@ module.exports.register = async (req, res) => {
 
         //add user to database
         const createUser = await Users.create({name,email,password,tokens:token})
+
+        //send success response
+        res.status(200).json({message: "הרשמה הושלמה בהצלחה !", token, user: {name,email}});
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message: "משהו השתבש",error});
+    }
+}
+
+module.exports.adminRegister = async (req, res) => {
+    try {
+        // get data from user
+        const {name, email, password} = req.body;
+        // console.log(req.body);
+
+        //check data validation errors
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            return res.status(403).json({message: "אנא הכנס את המידע הנדרש",errors:errors})
+        }
+
+        // if user exist
+        const checkUser = await Users.findOne({email})
+        if(checkUser){
+            return res.status(400).json({message: "אימייל כזה כבר רשום אצלנו במערכת"});
+        }
+
+        //create authentication token
+        const token = jwt.sign({user:{email,name} }, process.env.JWT_SECRET, { expiresIn: '7d' } );
+
+        //add user to database
+        const createAdmin = await Admins.create({name,email,password,tokens:token})
 
         //send success response
         res.status(200).json({message: "הרשמה הושלמה בהצלחה !", token, user: {name,email}});

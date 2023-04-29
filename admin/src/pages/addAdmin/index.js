@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/loader";
-import axios from "../utils/axios";
+import Loader from "../../components/loader";
+import axios from "../../utils/axios";
 import {
   AUTH_LOADING_ON,
   AUTH_LOADING_OFF,
   SET_USER,
-} from "../store/constants";
+} from "../../store/constants";
 import { toast } from "react-toastify";
 
-const Register = () => {
+const AddAdmin = () => {
   const { isLoading } = useSelector((e) => e.AuthReducer);
   const dispatch = useDispatch();
   const [state, setstate] = useState({
@@ -20,12 +20,12 @@ const Register = () => {
   });
   const handleSubmit = async (e) => {
     if(state.password !== state.confirmPassword){
-      toast.error("Password not match")
+      toast.error("סיסמה אינה תואמת")
       return
     }
 
     if(state.password.length < 6){
-      toast.error("Password must be at least 6 characters")
+      toast.error("סיסמה חייבת להיות מינימום של 6 תוויםs")
       return
     }
     
@@ -34,7 +34,7 @@ const Register = () => {
     try {
       const { data } = await axios.post("/api/register", state);
       localStorage.setItem("token", data?.token || null);
-      toast.success("Register Successful");
+      toast.success("אדמין חדש נוסף");
       dispatch({ type: SET_USER, payload: data?.user || null });
       dispatch({ type: AUTH_LOADING_OFF });
     } catch (error) {
@@ -114,4 +114,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default AddAdmin;
