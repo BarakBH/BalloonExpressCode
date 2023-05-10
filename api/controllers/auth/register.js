@@ -1,5 +1,5 @@
 const Users = require('../../models/user.model');
-const Admins = require('../../models/admin.model');
+// const Admins = require('../../models/admin.model');
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
@@ -60,14 +60,14 @@ module.exports.adminRegister = async (req, res) => {
         // if user exist
         const checkUser = await Users.findOne({email})
         if(checkUser){
-            return res.status(400).json({message: "אימייל כזה כבר רשום אצלנו במערכת"});
+            return res.status(400).json({message: "אדמין כבר קיים"});
         }
 
         //create authentication token
         const token = jwt.sign({user:{email,name} }, process.env.JWT_SECRET, { expiresIn: '7d' } );
 
         //add user to database
-        const createAdmin = await Admins.create({name,email,password,tokens:token})
+        const createAdmin = await Users.create({name,email,password,tokens:token, role:'admin'});
 
         //send success response
         res.status(200).json({message: "הרשמה הושלמה בהצלחה !", token, user: {name,email}});

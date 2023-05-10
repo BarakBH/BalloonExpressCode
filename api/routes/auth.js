@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { register, registerValidation } = require('../controllers/auth/register');
+const { register, registerValidation, adminRegister } = require('../controllers/auth/register');
 const { login } = require('../controllers/auth/login');
 const { logout } = require('../controllers/auth/logout');
 const { authorize } = require('../controllers/auth/authorize');
@@ -9,6 +9,7 @@ const Users = require('../models/user.model');
 
 
 router.post('/register', registerValidation, register);
+router.post('/adminRegister', registerValidation, adminRegister);
 router.post('/login', login);
 router.post('/logout', logout);
 // router.post('/reset-password', resetPassword);
@@ -17,7 +18,7 @@ router.get('/customers', authorize, async (req, res) => {
     const customers = await Users.find({ role: 'customer' });
     res.status(200).json(customers);
   } catch (error) {
-    res.status(500).json({message: "Something wrong",error});
+    res.status(500).json({ message: "Something wrong", error });
   }
 })
 

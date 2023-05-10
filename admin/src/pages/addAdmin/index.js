@@ -32,7 +32,7 @@ const AddAdmin = () => {
     e.preventDefault();
     dispatch({ type: AUTH_LOADING_ON });
     try {
-      const { data } = await axios.post("/api/register", state);
+      const { data } = await axios.post("/api/adminRegister", state);
       localStorage.setItem("token", data?.token || null);
       toast.success("אדמין חדש נוסף");
       dispatch({ type: SET_USER, payload: data?.user || null });
