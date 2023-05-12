@@ -10,7 +10,7 @@ const Orders = () => {
   const [orders, setorders] = useState([]);
   const [refresh, setrefresh] = useState(false);
   const changeOrderStatus = async (s, id) => {
-    toast.loading("Updating Order...");
+    toast.loading("מעדכן הזמנה ...");
     try {
       const response = await axios.put('/api/orders?status=' + s + '&id=' + id);
       toast.dismiss();
@@ -22,7 +22,7 @@ const Orders = () => {
         toast.error(error.response.data.message);
         return console.log(error.response);
       }
-      toast.error("Error updating Order");
+      toast.error("בעיה בעדכון הזמנה");
       console.log(error);
     }
   }
@@ -31,16 +31,16 @@ const Orders = () => {
     return (
       <OptionDropdown>
         <ul className="action-options">
-          <li onClick={() => changeOrderStatus('pending', p.original._id)}>pending</li>
-          <li onClick={() => changeOrderStatus('processing', p.original._id)}>processing</li>
-          <li onClick={() => changeOrderStatus('shipped', p.original._id)}>shipped</li>
+          <li onClick={() => changeOrderStatus('מחכה לאישור', p.original._id)}>מחכה לאישור</li>
+          <li onClick={() => changeOrderStatus('עובדים על זה', p.original._id)}>עובדים על זה</li>
+          <li onClick={() => changeOrderStatus('נשלח', p.original._id)}>נשלח</li>
         </ul>
       </OptionDropdown>
     )
   }
   
   const PriceCell = (p) => {
-    return <h3>{p.value}$</h3>
+    return <h3>{p.value}₪</h3>
   }
   
   const StatusCell = (p) => {
@@ -70,10 +70,10 @@ const Orders = () => {
       accessor: "paymentMethod",
     },
     {
-      Header: "פלאפון",
+      Header: "כתובת למשלוח",
       accessor: "address",
       Cell: (p) => {
-        return <span>{p.value?.phone || 'null'}</span>
+        return <span>{p.value?.phone || 'אין כתובת למשלוח'}</span>
       }
     },
     {

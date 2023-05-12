@@ -21,12 +21,12 @@ const Register = () => {
   });
   const handleSubmit = async (e) => {
     if(state.password !== state.confirmPassword){
-      toast.error("Password not match")
+      toast.error("הסיסמאות לא תואמות")
       return
     }
 
     if(state.password.length < 6){
-      toast.error("Password must be at least 6 characters")
+      toast.error("סיסמא חייבת להיות לפחות עם 6 תווים")
       return
     }
     
@@ -35,7 +35,9 @@ const Register = () => {
     try {
       const { data } = await axios.post("/api/register", state);
       localStorage.setItem("token", data?.token || null);
-      toast.success("Register Successful");
+      toast.success("משתמש נרשם בהצלחה !");
+      toast.success("ברוך הבא לחנות");
+      window.location.href = 'main';
       dispatch({ type: SET_USER, payload: data?.user || null });
       dispatch({ type: AUTH_LOADING_OFF });
     } catch (error) {
