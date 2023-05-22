@@ -48,7 +48,7 @@ const AddAdmin = () => {
   };
   return (
     <div className="auth">
-      <form onSubmit={handleSubmit} className="login-form">
+      <form onSubmit={handleSubmit} className="alogin-form">
         <h2>הוספת משתמש אדמין חדש</h2>
         <div className="form-group">
           <label htmlFor="email">הכנס שם</label>

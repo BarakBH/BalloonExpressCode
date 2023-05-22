@@ -10,7 +10,7 @@ router.post('/orders', authorize, async (req, res) => {
 
     if(!products || !amount || !paymentMethod || !address) {
       return res.status(400).json({
-        message: "Missing required fields"
+        message: "חסרים שדות חובה"
       });
     }
 
@@ -40,7 +40,7 @@ router.post('/orders', authorize, async (req, res) => {
     });
 
     res.status(201).json({
-      message: "Order add successfully",
+      message: "הזמנה נקלטה בהצלחה",
       order
     });
 
@@ -65,13 +65,13 @@ router.put('/orders', authorizeAdmin, async (req, res) => {
     const { status, id } = req.query;
     if(!status || !id) {
       return res.status(400).json({
-        message: "Missing required fields"
+        message: "חסרים שדות חובה"
       });
     }
 
     const order = await Orders.findByIdAndUpdate({_id: id}, { status }, { new: true });
     res.status(200).json({
-      message: "Order updated successfully",
+      message: "עדכון הזמנה בוצע בהצלחה",
       order
     });
     
