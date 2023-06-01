@@ -4,7 +4,7 @@ const dbinit = require('./config/db.config');
 const app = express();
 const path = require('path');
 
-var allowlist = ['http://localhost:3000/', 'http://localhost:3001/']
+var allowlist = ['http://localhost/', 'http://127.0.0.1/']
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
   if (allowlist.indexOf(req.header('Origin')) !== -1) {
