@@ -9,7 +9,7 @@ router.post('/products', authorizeAdmin, async (req, res) => {
 
     const { name, sku, quantity, sale, colors, published, price, desc, shortDesc, thumbnail, gallery, category, isSale } = req.body;
     console.log(colors)
-    if(!name || !price || !thumbnail) {
+    if (!name || !price || !thumbnail) {
       return res.status(400).json({
         message: "Missing required fields"
       });
@@ -19,26 +19,26 @@ router.post('/products', authorizeAdmin, async (req, res) => {
 
     // check if slug is unique
     const slugExists = await Products.findOne({ slug });
-    if(slugExists) {
+    if (slugExists) {
       return res.status(400).json({
         message: "Product already exists"
       });
     }
-    
+
     const product = await Products.create({
       name,
       slug,
-      sku : sku || null,
-      quantity : quantity || null,
-      isSale : isSale || false,
-      sale : sale || null,
-      published : published || true,
+      sku: sku || null,
+      quantity: quantity || null,
+      isSale: isSale || false,
+      sale: sale || null,
+      published: published || true,
       price,
-      desc : desc || "",
-      shortDesc : shortDesc || "",
+      desc: desc || "",
+      shortDesc: shortDesc || "",
       thumbnail,
-      gallery : gallery || [],
-      category : category || {},
+      gallery: gallery || [],
+      category: category || {},
       options: {
         colors: colors || [],
       }
@@ -48,10 +48,10 @@ router.post('/products', authorizeAdmin, async (req, res) => {
       message: "Product add successfully",
       product
     });
-    
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({  message: 'Internal Server Error', error });
+    res.status(500).json({ message: 'Internal Server Error', error });
   }
 });
 
@@ -62,29 +62,29 @@ module.exports = router;
 router.put('/products', authorizeAdmin, async (req, res) => {
   try {
 
-    const {_id, name, sku, colors, quantity, sale, published, price, desc, thumbnail, shortDesc, gallery, category, isSale } = req.body;
+    const { _id, name, sku, colors, quantity, sale, published, price, desc, thumbnail, shortDesc, gallery, category, isSale } = req.body;
 
-    if(!_id, !name || !price || !thumbnail) {
+    if (!_id, !name || !price || !thumbnail) {
       return res.status(400).json({
         message: "Missing required fields"
       });
     }
 
     console.log(colors)
-    
+
     const product = await Products.findOneAndUpdate({ _id: _id }, {
       name,
-      sku : sku || null,
-      quantity : quantity || null,
-      isSale : isSale || false,
-      sale : sale || null,
-      published : published || true,
+      sku: sku || null,
+      quantity: quantity || null,
+      isSale: isSale || false,
+      sale: sale || null,
+      published: published || true,
       price,
-      desc : desc || "",
-      shortDesc : shortDesc || "",
+      desc: desc || "",
+      shortDesc: shortDesc || "",
       thumbnail,
-      gallery : gallery || [],
-      category : category || {},
+      gallery: gallery || [],
+      category: category || {},
       options: {
         colors: colors || [],
       }
@@ -96,10 +96,10 @@ router.put('/products', authorizeAdmin, async (req, res) => {
       message: "Product saved successfully",
       product
     });
-    
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({  message: 'Internal Server Error', error });
+    res.status(500).json({ message: 'Internal Server Error', error });
   }
 });
 
@@ -111,29 +111,29 @@ router.get('/products/:key', async (req, res) => {
 
     const { key } = req.params;
 
-    if(!key) {
+    if (!key) {
       return res.status(400).json({
         message: "Missing required fields"
       });
     }
 
     const productBySlug = await Products.findOne({ slug: key });
-    if(productBySlug) {
+    if (productBySlug) {
       return res.status(200).json(productBySlug);
     }
 
     const productById = await Products.findOne({ _id: key });
-    if(productById) {
+    if (productById) {
       return res.status(200).json(productById);
     }
 
     return res.status(404).json({
       message: "Product not found"
     });
-    
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({  message: 'Internal Server Error', error });
+    res.status(500).json({ message: 'Internal Server Error', error });
   }
 });
 
@@ -143,10 +143,10 @@ router.get('/products', async (req, res) => {
     const products = await Products.find();
 
     return res.status(200).json(products);
-    
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({  message: 'Internal Server Error', error });
+    res.status(500).json({ message: 'Internal Server Error', error });
   }
 });
 
@@ -155,14 +155,14 @@ router.delete('/products/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    if(!id) {
+    if (!id) {
       return res.status(400).json({
         message: "Missing required fields"
       });
     }
 
     const product = await Products.findOneAndDelete({ _id: id });
-    if(product) {
+    if (product) {
       return res.status(200).json({
         message: "Product deleted successfully"
       });
@@ -171,10 +171,10 @@ router.delete('/products/:id', async (req, res) => {
     return res.status(404).json({
       message: "Product not found"
     });
-    
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({  message: 'Internal Server Error', error });
+    res.status(500).json({ message: 'Internal Server Error', error });
   }
 });
 
@@ -184,15 +184,15 @@ router.put('/products/featured', authorizeAdmin, async (req, res) => {
     const { id, featured } = req.body;
     console.log(id, featured)
 
-    if(!id) {
+    if (!id) {
       return res.status(400).json({
         message: "Missing required fields"
       });
     }
-    
+
     //update featured
     const updatedProduct = await Products.findOneAndUpdate({ _id: id }, { isFeatured: featured || false });
-    if(updatedProduct) {
+    if (updatedProduct) {
       return res.status(200).json({
         message: "Featured update successfully"
       });
@@ -204,7 +204,7 @@ router.put('/products/featured', authorizeAdmin, async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).json({  message: 'Internal Server Error', error });
+    res.status(500).json({ message: 'Internal Server Error', error });
   }
 });
 
@@ -212,24 +212,24 @@ router.get('/product/:key', async (req, res) => {
   try {
     const { key } = req.params;
 
-    if(!key) {
+    if (!key) {
       return res.status(400).json({
         message: "Missing required fields"
       });
     }
 
     const product = await Products.findOne({ slug: key });
-    if(product) {
+    if (product) {
       return res.status(200).json(product);
     }
 
     return res.status(404).json({
       message: "Product not found"
     });
-    
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({  message: 'Internal Server Error', error });
+    res.status(500).json({ message: 'Internal Server Error', error });
   }
 })
 

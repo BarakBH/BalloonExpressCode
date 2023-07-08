@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import axios from "../utils/axios";
 import { toast } from "react-toastify";
@@ -9,6 +9,8 @@ import Loader from "../components/loader";
 import { useNavigate } from "react-router-dom";
 import ShopingDetail from "../components/shopDetail";
 import { PayPalButton } from "react-paypal-button-v2";
+import { BiCalendar, BiCalendarEvent } from "react-icons/bi";
+import { Calendar } from "react-calendar";
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -50,6 +52,20 @@ const Checkout = () => {
     }
   }, [cartProducts]);
 
+  // const [calDate, setCalDate] = useState(new Date());
+
+  // function onChange(calDate) {
+  //   // change results based on calendar date click
+  //   setCalDate(calDate)
+  // };
+
+  const [date, setDate] = useState('');
+  const dateInputRef = useRef(null);
+
+  const handleChange = (e) => {
+    setDate(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -58,7 +74,7 @@ const Checkout = () => {
       return;
     }
 
-    if(shiping.paymentMethod === ""){
+    if (shiping.paymentMethod === "") {
       toast.error("בבקשה בחר שיטת תשלום");
       return;
     }
@@ -99,13 +115,14 @@ const Checkout = () => {
 
   return (
     <div className="checkout">
+      {/* <Calendar onChange={onChange} value={calDate} /> */}
       <div className="container">
         <form onSubmit={handleSubmit} className="shipping-address-form">
           <div className="left-side">
-            <h2>פרטי חיוב</h2>
+            <h2 style={{ textAlign: 'center' }}>פרטי חיוב</h2>
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="firstName">שם פרטי</label>
+                <label htmlFor="firstName" style={{ textAlign: 'right' }}>שם פרטי</label>
                 <input
                   value={shiping.fname}
                   onChange={(e) =>
@@ -117,7 +134,7 @@ const Checkout = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastName">שם משפחה</label>
+                <label htmlFor="lastName" style={{ textAlign: 'right' }}>שם משפחה</label>
                 <input
                   value={shiping.lname}
                   onChange={(e) =>
@@ -130,7 +147,7 @@ const Checkout = () => {
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="email">אימייל</label>
+              <label htmlFor="email" style={{ textAlign: 'right' }}>אימייל</label>
               <input
                 value={shiping.email}
                 onChange={(e) =>
@@ -142,7 +159,7 @@ const Checkout = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="phone">טלפון</label>
+              <label htmlFor="phone" style={{ textAlign: 'right' }}>טלפון</label>
               <input
                 value={shiping.phone}
                 onChange={(e) =>
@@ -154,7 +171,7 @@ const Checkout = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="address">כתובת למשלוח</label>
+              <label htmlFor="address" style={{ textAlign: 'right' }}>כתובת למשלוח</label>
               <input
                 value={shiping.address}
                 onChange={(e) =>
@@ -165,7 +182,24 @@ const Checkout = () => {
                 required
               />
             </div>
-           
+
+            <div className="form-group">
+              <label htmlFor="calender" style={{ textAlign: 'right' }}>
+                שריון תאריך
+                <span>
+                  <BiCalendarEvent />
+                </span>
+              </label>
+              <input
+                type="date"
+                onChange={handleChange}
+                ref={dateInputRef}
+              />
+
+              {date ? <p style={{ textAlign: 'right' }}>{date} : שריון תאריך ל</p> : <p></p>}
+
+            </div>
+
             {/* <div className="form-group">
               <label htmlFor="state">מדינה</label>
               <input
@@ -179,7 +213,7 @@ const Checkout = () => {
               />
             </div> */}
             <div className="form-group">
-              <label htmlFor="zip">מיקוד</label>
+              <label htmlFor="zip" style={{ textAlign: 'right' }}>מיקוד</label>
               <input
                 value={shiping.zip}
                 onChange={(e) =>
@@ -191,7 +225,7 @@ const Checkout = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="city">הערות למשלוח</label>
+              <label htmlFor="city" style={{ textAlign: 'right' }}>הערות למשלוח</label>
               <input
                 value={shiping.comments}
                 onChange={(e) =>
@@ -203,7 +237,7 @@ const Checkout = () => {
             </div>
           </div>
           <div className="right-side">
-            <h2>ההזמנה שלך</h2>
+            <h2 style={{ textAlign: 'center' }}>ההזמנה שלך</h2>
             <table className="products-table">
               <tbody>
                 <tr>
