@@ -16,8 +16,8 @@ export default function ReactPayPal() {
               {
                 description: "Your description",
                 amount: {
-                  currency_code: "INR",
-                  value: 500.0,
+                  currency_code: "ILS",
+                  value: 1.0,
                 },
               },
             ],
