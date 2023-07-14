@@ -1,4 +1,4 @@
-.cartDrawer{
+.cartDrawer {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -8,13 +8,13 @@
   transition: $transition;
   opacity: 0;
   visibility: hidden;
-  .overlay{
+  .overlay {
     backdrop-filter: blur(10px);
     position: absolute;
     width: 100%;
     height: 100%;
   }
-  .cartDrawer__content{
+  .cartDrawer__content {
     position: absolute;
     height: 100%;
     right: 0;
@@ -27,7 +27,7 @@
     transform: translateX(450px);
     transition: $transition;
     padding: 40px 40px 30px 30px;
-    .total{
+    .total {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -35,35 +35,40 @@
       border-top: 1px solid $borderColor;
       margin-top: 30px;
     }
-    .cart-products{
+    .toRight {
+      text-align: right;
+      padding: 10%;
+      z-index: 1;
+    }
+    .cart-products {
       margin-top: 30px;
     }
-    .checkout-btn{
+    .checkout-btn {
       width: 100%;
       padding: 15px;
       margin-top: 20px;
       max-width: 100%;
     }
-    .cart-product{
+    .cart-product {
       display: flex;
       margin-bottom: 10px;
       position: relative;
       padding-right: 15px;
-      img{
+      img {
         height: 70px;
         width: 70px;
         border-radius: 5px;
         margin-right: 20px;
         object-fit: cover;
       }
-      h3{
+      h3 {
         font-size: 15px;
       }
-      p{
+      p {
         margin-top: 5px;
         font-size: 13px;
       }
-      .removebtn{
+      .removebtn {
         position: absolute;
         right: 0;
         top: 0;
@@ -73,7 +78,7 @@
     }
   }
 
-  .closebtn{
+  .closebtn {
     position: absolute;
     z-index: 2;
     right: 20px;
@@ -82,21 +87,21 @@
   }
 }
 
-.cartDrawer.active{
+.cartDrawer.active {
   opacity: 1;
   visibility: visible;
-  .cartDrawer__content{
+  .cartDrawer__content {
     transform: translateX(0);
   }
 }
 
-.cartDrawer .no-products{
+.cartDrawer .no-products {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 50px 10px;
-  .icon{
+  .icon {
     font-size: 60px;
     margin-bottom: 20px;
   }

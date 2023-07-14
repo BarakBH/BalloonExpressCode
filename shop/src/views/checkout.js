@@ -184,35 +184,6 @@ const Checkout = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="calender" style={{ textAlign: 'right' }}>
-                שריון תאריך
-                <span>
-                  <BiCalendarEvent />
-                </span>
-              </label>
-              <input
-                type="date"
-                onChange={handleChange}
-                ref={dateInputRef}
-              />
-
-              {date ? <p style={{ textAlign: 'right' }}>{date} : שריון תאריך ל</p> : <p></p>}
-
-            </div>
-
-            {/* <div className="form-group">
-              <label htmlFor="state">מדינה</label>
-              <input
-                value={shiping.state}
-                onChange={(e) =>
-                  setShiping({ ...shiping, state: e.target.value })
-                }
-                type="text"
-                id="state"
-                required
-              />
-            </div> */}
-            <div className="form-group">
               <label htmlFor="zip" style={{ textAlign: 'right' }}>מיקוד</label>
               <input
                 value={shiping.zip}

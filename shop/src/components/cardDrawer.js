@@ -11,6 +11,11 @@ const CardDrawer = () => {
   const { cartOpen } = useSelector((e) => e.OtherReducer);
   const { cart } = useSelector((state) => state.DataReducer);
   const [totalPrice, settotalPrice] = useState(0)
+  const [isScheduledDate, setIsScheduledDate] = useState(false);
+  const [date, setDate] = useState(null);
+  const [time, setTime] = useState(null);
+
+
   const closeCart = () => {
     dispatch({ type: TOGGLE_CART, payload: false });
   };
@@ -20,13 +25,27 @@ const CardDrawer = () => {
 
   useEffect(() => {
     settotalPrice(cart.reduce((total, product) => total + product.count * product.price, 0))
-  },[cart])
+  }, [cart])
 
   const removeProductFromCart = (id) => {
     const newCart = cart.filter((item) => item._id !== id);
     localStorage.setItem("cartProducts", JSON.stringify(newCart));
     dispatch({ type: SET_CART, payload: newCart });
   };
+
+  const handleDateChange = (e) => {
+    setIsScheduledDate(!isScheduledDate);
+    setDate(e.target.value)
+  };
+
+  const handleTimeChange = (e) => {
+    setIsScheduledDate(!isScheduledDate);
+    setTime(e.target.value)
+  };
+  // const handleTimeChange = (e) = {
+  //   setTime(e.target.value)
+  // }
+
   return (
     <div className={`cartDrawer ${show && "active"}`}>
       <div className="overlay" onClick={closeCart}></div>
@@ -63,7 +82,35 @@ const CardDrawer = () => {
           <span>₪{totalPrice}</span>
           <span>: סהכ</span>
         </div>
-        <Link onClick={closeCart} className="btn checkout-btn" to='/checkout'>הזמן עכשיו</Link>
+        <br />
+        <div className="toRight">
+          <h2 htmlFor="calender">
+            שריון תאריך ושעה
+          </h2>
+
+          <input
+            type="date"
+            onChange={handleDateChange}
+          />
+
+          <input
+            type="time"
+            onChange={handleTimeChange}
+          />
+        </div>
+
+        {date ? <><p style={{ textAlign: 'right' }}>{date} : שריון תאריך ל </p> <p style={{ textAlign: 'right' }}>{time} : בשעה</p> </> : <p></p>}
+
+        {/* <div className="toRight">
+          <label htmlFor="calender">
+
+            <span>
+              שריון שעה
+            </span>
+          </label>
+
+        </div> */}
+        {date && time && <Link onClick={closeCart} className="btn checkout-btn" to='/checkout'>הזמן עכשיו</Link>}
       </div>
     </div>
   );
