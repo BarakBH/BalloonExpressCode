@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import GallerySlider from '../components/sliders/gallerySlider';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
@@ -16,9 +16,9 @@ const Single = () => {
   const dispatch = useDispatch();
   const [color, setcolor] = useState()
 
-  useEffect( async () => {
+  useEffect(async () => {
     try {
-      if(id) {
+      if (id) {
         const { data } = await axios.get(`/api/product/${id}`);
         setproduct(data);
       }
@@ -33,31 +33,31 @@ const Single = () => {
   }
 
   const decrement = () => {
-    if(count > 0) {
+    if (count > 0) {
       setcount(count - 1);
     }
   }
 
   const addToCart = () => {
 
-    if(product.quantity < count && product.quantity !== null) {
+    if (product.quantity < count && product.quantity !== null) {
       toast.error(`מצטערים ! אין לנו מספיק "${product.name}" במלאי`);
       return;
     }
 
-    if(product?.options?.colors.length > 0 && !color) {
+    if (product?.options?.colors.length > 0 && !color) {
       toast.error(`בבקשה בחרו צבע עבור ${product.name}`);
       return;
     }
 
-    if(count === 0) {
+    if (count === 0) {
       toast.error(`בבקשה בחרו כמות`);
       return;
     }
 
     let cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
 
-    if(!cartProducts) {
+    if (!cartProducts) {
       cartProducts = [];
     }
 
@@ -66,7 +66,7 @@ const Single = () => {
     let newCartproduct;
 
     //update quantity
-    if(productInCart) {
+    if (productInCart) {
       productInCart.count = count + productInCart.count;
     } else {
       newCartproduct = {
@@ -80,7 +80,7 @@ const Single = () => {
       cartProducts.push(newCartproduct);
     }
 
-    dispatch({type: SET_CART, payload: cartProducts});
+    dispatch({ type: SET_CART, payload: cartProducts });
     setcount(0);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
     toast.success('מוצר התווסף לעגלת הקניות בהצלחה !');

@@ -11,7 +11,7 @@ const CategoriesSlider = () => {
       {categories.length > 0 && (
         <div className="categories-slider">
           <div className="container">
-            <h2>קטגוריות</h2>
+            <h2 style={{ textAlign: 'right' }}>קטגוריות</h2>
             <Swiper
               spaceBetween={30}
               modules={[Navigation]}
@@ -26,7 +26,7 @@ const CategoriesSlider = () => {
                   slidesPerView: 7,
                 },
               }}
-              >
+            >
               {categories.map((category, index) => (
                 <SwiperSlide key={index}>
                   <Link
