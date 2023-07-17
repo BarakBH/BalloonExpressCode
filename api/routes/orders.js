@@ -9,7 +9,7 @@ router.get('/orders/checkout:orderId', authorize, async (req, res) => {
   try {
     const { products } = req.body;
 
-    stripe.checkout.session.create({
+    stripe.checkout.sessions.create({
       payment_method: ['card'],
       success_url: `${req.protocol}://${req.get('host')}/`,
       cancel_url: `${req.protocol}://${req.get('host')}/`,
@@ -25,7 +25,13 @@ router.get('/orders/checkout:orderId', authorize, async (req, res) => {
           quantity: products.quantity
         }
       ]
+    });
+
+    res.status(200).json({
+      status: 'success',
+      session
     })
+
   } catch (error) {
     console.log('Err on checkout with Stripe', error);
     res.status(500).json({ message: 'שגיאה בשרת', error });
